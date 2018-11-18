@@ -10,7 +10,7 @@ const conf = require('../../config/db')[env];
 const db = {};
 console.log(conf)
 const sequelize = new Sequelize(conf.name, conf.user, conf.pass, {
-  host: '127.0.0.1',
+  host: conf.host,
   dialect: 'postgres',
   define: {
     freezeTableName: true
