@@ -1,3 +1,4 @@
 #!/bin/bash
 
-yarn start
+nvm use
+node index.js
