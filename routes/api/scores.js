@@ -6,8 +6,6 @@ const router = express.Router();
 const db = require('../../database/models')
 
 router.post('/', ( req, res ) => {
-  console.log("incoming")
-  console.log(req.body)
   db.Score.update( { score: req.body.score }, { where: { user_id: req.body.user_id } } )
     .then( () => res.sendStatus(200))
     .catch( err => res.sendStatus(500))
@@ -41,7 +39,6 @@ router.get('/user-standings/:user', async ( req, res ) => {
 
 router.get('/:id', ( req, res ) => {
   db.Score.findOne({ where: { id }, include: [ { model: db.User } ] }).then( user => {
-    console.log(user)
     res.json(user)
   }).catch(err => {
     console.log(err)

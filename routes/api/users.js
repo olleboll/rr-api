@@ -6,8 +6,6 @@ const router = express.Router();
 const db = require('../../database/models')
 
 router.post('/', ( req, res ) => {
-  console.log("incoming")
-  console.log(req.body)
   let user, score
   db.User.create(req.body)
     .then( _user => {
@@ -15,7 +13,7 @@ router.post('/', ( req, res ) => {
       return db.Score.create({ score: 0, user_id: _user.id })
     })
     .then( score => user.setScore(score))
-    .then( () => res.sendStatus(201))
+    .then( () => res.json(user.get({ plain: true })))
     .catch(err => {
       console.log(err)
       res.sendStatus(500)

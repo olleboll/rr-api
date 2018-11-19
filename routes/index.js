@@ -7,7 +7,6 @@ const api = require('./api')
 
 router.use('/api/v1', api);
 router.get('/', (req, res) => {
-  console.log("yoo")
   res.sendStatus(200)
 })
 
