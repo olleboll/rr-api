@@ -25,8 +25,8 @@ const fetchDescendingTopList = async (limit) => {
 }
 
 router.get('/highscore', async ( req, res ) => {
-  const highscore = await fetchDescendingTopList(2)
-  return res.json(highscore)
+  const highscore = await fetchDescendingTopList(10)
+  return res.json({ highscore })
 })
 
 router.get('/user-standings/:user', async ( req, res ) => {
