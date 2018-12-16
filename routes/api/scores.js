@@ -7,7 +7,7 @@ const db = require('../../database/models')
 
 router.post('/', ( req, res ) => {
   db.Score.update( { score: req.body.score }, { where: { user_id: req.body.user_id } } )
-    .then( () => res.sendStatus(200))
+    .then( () => res.json({ status: "OK" }))
     .catch( err => res.sendStatus(500))
 
 })
